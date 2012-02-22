@@ -16,7 +16,18 @@ class Migration_Initial_permissions extends Migration {
 		
 		// change the roles which don't have any specific login_destination set
 		$this->db->query("INSERT INTO {$prefix}role_permissions VALUES(1, ".$permission_id.")");
-		
+
+        $default_settings = "
+			INSERT INTO `{$prefix}settings` (`name`, `module`, `value`) VALUES
+			 ('antispam.antispam_enabled', 'antispam', '1'),
+			 ('antispam.antispam_type', 'antispam', '1'),
+			 ('antispam.recaptcha_key_public', 'antispam', ''),
+			 ('antispam.recaptcha_key_private', 'antispam', ''),
+			 ('antispam.recaptcha_theme', 'antispam', 'red'),
+			 ('antispam.recaptcha_lang', 'antispam', 'en'),
+			 ('antispam.recaptcha_compliant', 'antispam', '1');
+		";
+        $this->db->query($default_settings);
 	}
 	
 	//--------------------------------------------------------------------
@@ -33,8 +44,9 @@ class Migration_Initial_permissions extends Migration {
 		}
 		//delete the role
 		$this->db->query("DELETE FROM {$prefix}permissions WHERE (name = 'Site.Antispam.Manage')");
+        $this->db->query("DELETE FROM {$prefix}settings WHERE (module = 'antispam')");
 
-		}
+	}
 	
 	//--------------------------------------------------------------------
 	

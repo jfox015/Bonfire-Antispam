@@ -10,9 +10,9 @@
 
 		<!-- Eneable/Disable antispam -->
 	<div>
-		<label for="antispam_enabled"><?php echo lang('us_antispam_spambot'); ?></label>
+		<label><?php echo lang('us_antispam_spambot'); ?></label>
 		<?php
-		$use_selection = ((isset($antispam_enabled) && $antispam_enabled == 1) || !isset($antispam_enabled)) ? true : false;
+		$use_selection = ((isset($settings['antispam.antispam_enabled']) && $settings['antispam.antispam_enabled'] == 1) || !isset($settings['antispam.antispam_enabled'])) ? true : false;
 		echo form_checkbox('antispam_enabled',1, $use_selection,'id="antispam_enabled"');
 		?>
 	</div>
@@ -38,12 +38,12 @@
 		</div>
 		<div>
             <label for="recaptcha_key_public"><?php echo lang('us_recapcha_public'); ?></label>
-            <input type="text" id="recaptcha_key_public" name="recaptcha_key_public" value="<?php echo (isset($recaptcha_key_public)) ? $recaptcha_key_public: set_value('recaptcha_key_public'); ?>" />
+            <input type="text" id="recaptcha_key_public" name="recaptcha_key_public" value="<?php echo (isset($settings['antispam.recaptcha_key_public'])) ? $settings['antispam.recaptcha_key_public']: set_value('antispam.recaptcha_key_public'); ?>" />
         </div>
             <!-- LEAGUE ABBR -->
         <div>
             <label for="recaptcha_key_private"><?php echo lang('us_recapcha_private'); ?></label>
-            <input type="text" class="small" id="recaptcha_key_private" name="recaptcha_key_private" value="<?php echo (isset($recaptcha_key_private)) ? $recaptcha_key_private: set_value('recaptcha_key_private'); ?>" />
+            <input type="text" class="small" id="recaptcha_key_private" name="recaptcha_key_private" value="<?php echo (isset($settings['antispam.recaptcha_key_private'])) ? $settings['antispam.recaptcha_key_private']: set_value('antispam.recaptcha_key_private'); ?>" />
         </div>
         
 		<fieldset>
@@ -56,7 +56,7 @@
 				$themes = loadRecaptchaThemes();
 				foreach($themes as $id => $theme){
 					echo('<option value="'.$id.'"');
-					if (isset($recaptcha_theme) && $recaptcha_theme == $id) { 
+					if (isset($settings['antispam.recaptcha_theme']) && $settings['antispam.recaptcha_theme'] == $id) {
 						echo(' selected="selected"');
 					}
 					echo('">'.$theme.'</option>');
@@ -71,7 +71,7 @@
 				$langs = loadRecaptchaLangs();
 				foreach($langs as $id => $lang){
 					echo('<option value="'.$id.'"');
-					if (isset($recaptcha_lang) && $recaptcha_lang == $id) { 
+					if (isset($settings['antispam.recaptcha_lang']) && $settings['antispam.recaptcha_lang'] == $id) {
 						echo(' selected="selected"');
 					}
 					echo('">'.$lang.'</option>');
@@ -82,15 +82,15 @@
 		
 			<!-- AUTO LOAD -->
 		<div>
-			<label for="recaptcha_compliant"><?php echo lang('us_recapcha_stnd'); ?></label>
+			<label><?php echo lang('us_recapcha_stnd'); ?></label>
 			<?php
-			$compliant = (isset($recaptcha_compliant) && $recaptcha_compliant == 1) ? true : false;
+			$compliant = (isset($settings['recaptcha_compliant']) && $settings['recaptcha_compliant'] == 1) ? true : false;
 			echo form_radio('recaptcha_compliant',1, $compliant);
 			echo(lang('us_recapcha_xhtml')."<br />");
 			?>
-			<label for="recaptcha_compliant">&nbsp;</label>
+			<label>&nbsp;</label>
 			<?php
-            $compliant = (isset($recaptcha_compliant) && $recaptcha_compliant == -1) ? true : false;
+            $compliant = (isset($settings['recaptcha_compliant']) && $settings['recaptcha_compliant'] == -1) ? true : false;
             echo form_radio('recaptcha_compliant',-1, $compliant);
 			echo(lang('us_recapcha_none'));
 			?>

@@ -5,6 +5,7 @@ $lang['sql_unauthorized']			= 'Unauthorized. Sorry you do not have the appropria
 
 $lang['us_antispam_spambot']		= 'Enable Countermeasures';
 $lang['us_antispam_service']		= 'Select a service';
+$lang['as_settings_saved']		    = 'Antispam settings saved';
 
 $lang['us_recapcha_note']			= '<b>reCAPTCHA</b> is a free, accessible CAPTCHA service that helps to digitize books while blocking spam on your site.';
 $lang['us_recapcha_auth']			= 'reCAPTCHA Authentication';
