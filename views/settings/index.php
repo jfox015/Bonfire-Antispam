@@ -84,7 +84,7 @@
 		<div>
 			<label><?php echo lang('us_recapcha_stnd'); ?></label>
 			<?php
-			$compliant = (isset($settings['recaptcha_compliant']) && $settings['recaptcha_compliant'] == 1) ? true : false;
+			$compliant = (isset($settings['antispam.recaptcha_compliant']) && $settings['antispam.recaptcha_compliant'] == 1) ? true : false;
 			echo form_radio('recaptcha_compliant',1, $compliant);
 			echo(lang('us_recapcha_xhtml')."<br />");
 			?>

@@ -28,24 +28,24 @@ class Antispam extends Front_Controller {
 	*
 	* 	URI VARS DATA PARAMS
 	* 	@param	$chlg	{String}	Challenge String
-	* 	@param	#resp	{String}	Response String
+	* 	@param	#res	{String}	Response String
 	* 	@return			{JSON}		JSON Response String
 	*
 	* 	@access			public
 	*/
 	public function captchaTest() {
 		
-		$sec_configs = read_config('security');
+		$settings = $this->settings_lib->find_all_by('module','antispam');
+        
+		$clg = $this->uri->segment(3);
+		$res = $this->uri->segment(4);
 		$code = 200;
 		$status = $answer = 'OK';
-		$priv_key = (isset($sec_configs['recaptcha_key_private'])) ? $sec_configs['recaptcha_key_private'] : '';
+		$priv_key = (isset($settings['antispam.recaptcha_key_private'])) ? $settings['antispam.recaptcha_key_private'] : '';
 		if (!empty($priv_key)) {
-			if (isset($this->uriVars['chlg']) && !empty($this->uriVars['chlg']) &&
-			isset($this->uriVars['resp']) && !empty($this->uriVars['resp'])) {
-				$this->load->helper('security/helpers/recaptcha');
-				$resp = recaptcha_check_answer($priv_key, $_SERVER['REMOTE_ADDR'],
-				$this->uriVars['chlg'],
-				$this->uriVars['resp']);
+			if (isset($clg) && !empty($clg) && isset($res) && !empty($res)) {
+				$this->load->helper('antispam/helpers/recaptcha');
+				$resp = recaptcha_check_answer($priv_key, $_SERVER['REMOTE_ADDR'],$clg,$res);
 				if (!$resp->is_valid) {
 					$code = 301;
 					$status = "fail";
