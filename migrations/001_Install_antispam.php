@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Migration_Initial_permissions extends Migration {
+class Migration_Install_antispam extends Migration {
 	
 	public function up() 
 	{

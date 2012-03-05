@@ -1,6 +1,6 @@
 # Bonfire AntiSpam Module
 
-A custom module for the Bonfire Admin Dashboard mod that incorporates antispam bot countermeasures.
+A custom module for the Bonfire Admin Dashboard mod that incorporates anti-spambot countermeasures.
 
 ## Features
 
