@@ -13,7 +13,7 @@
 
         <!-- Eneable/Disable antispam -->
         <div class="control-group <?php echo form_error('antispam_enabled') ? 'error' : '' ?>">
-            <label><?php echo lang('us_antispam_spambot') ?></label>
+             <label class="control-label"><?php echo lang('us_antispam_spambot') ?></label>
             <div class="controls">
                 <?php
                 $use_selection = ((isset($settings['antispam.antispam_enabled']) && $settings['antispam.antispam_enabled'] == 1) || !isset($settings['antispam.antispam_enabled'])) ? true : false;
@@ -37,7 +37,7 @@
             </div>
 
             <div class="control-group <?php echo form_error('recaptcha_key_public') ? 'error' : '' ?>">
-                <label><?php echo lang('us_recapcha_public') ?></label>
+                 <label class="control-label"><?php echo lang('us_recapcha_public') ?></label>
                 <div class="controls">
                     <input type="text" id="recaptcha_key_public" name="recaptcha_key_public" value="<?php echo (isset($settings['antispam.recaptcha_key_public'])) ? $settings['antispam.recaptcha_key_public']: set_value('antispam.recaptcha_key_public'); ?>" />
                     <?php if (form_error('recaptcha_key_public')) echo '<span class="help-inline">'. form_error('recaptcha_key_public') .'</span>'; ?>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="control-group <?php echo form_error('recaptcha_key_private') ? 'error' : '' ?>">
-                <label><?php echo lang('us_recapcha_private') ?></label>
+                 <label class="control-label"><?php echo lang('us_recapcha_private') ?></label>
                 <div class="controls">
                     <input type="text" class="small" id="recaptcha_key_private" name="recaptcha_key_private" value="<?php echo (isset($settings['antispam.recaptcha_key_private'])) ? $settings['antispam.recaptcha_key_private']: set_value('antispam.recaptcha_key_private'); ?>" />
                     <?php if (form_error('recaptcha_key_private')) echo '<span class="help-inline">'. form_error('recaptcha_key_private') .'</span>'; ?>
@@ -57,7 +57,7 @@
 		    <legend><?php echo lang('us_recapcha_opt'); ?></legend>
                 <!-- THRME -->
             <div class="control-group <?php echo form_error('recaptcha_theme') ? 'error' : '' ?>">
-                <label><?php echo lang('us_recapcha_theme') ?></label>
+                 <label class="control-label"><?php echo lang('us_recapcha_theme') ?></label>
                 <div class="controls">
                     <select id="recaptcha_theme" name="recaptcha_theme" class="small" >
                         <?php
@@ -76,7 +76,7 @@
 
                 <!-- Language -->
             <div class="control-group <?php echo form_error('recaptcha_lang') ? 'error' : '' ?>">
-                <label><?php echo lang('us_recapcha_lang') ?></label>
+                 <label class="control-label"><?php echo lang('us_recapcha_lang') ?></label>
                 <div class="controls">
                     <select id="recaptcha_lang" name="recaptcha_lang" class="small" >
                         <?php
@@ -96,7 +96,7 @@
 
                 <!-- AUTO LOAD -->
             <div class="control-group <?php echo form_error('recaptcha_compliant') ? 'error' : '' ?>">
-                <label><?php echo lang('us_recapcha_stnd') ?></label>
+                 <label class="control-label"><?php echo lang('us_recapcha_stnd') ?></label>
                 <div class="controls">
                     <?php
                     $compliant = (isset($settings['antispam.recaptcha_compliant']) && $settings['antispam.recaptcha_compliant'] == 1) ? true : false;
@@ -115,9 +115,9 @@
     </div>
     </fieldset>
 
-    <div class="form-actions">
-        <input type="submit" name="submit" class="btn primary" value="<?php echo lang('bf_action_save') ?> " /> <?php echo lang('bf_or') ?> <?php echo anchor(SITE_AREA .'/settings', lang('bf_action_cancel')); ?>
-    </div>
+	<div class="form-actions">
+		<input type="submit" name="submit" class="btn btn-primary" value="<?php echo lang('bf_action_save') .' '. lang('bf_context_settings') ?>" />
+	</div>
 
 </div>
 	
