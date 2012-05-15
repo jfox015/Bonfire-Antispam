@@ -4,5 +4,5 @@ $config['module_config'] = array(
 	'description'	=> 'Manage spam bot and site intrusion counter measures.',
 	'author'		=> 'Jeff Fox',
 	'name'			=> 'Anti-Spam',
-	'version'		=> '1.0'
+	'version'		=> '0.1'
 );
