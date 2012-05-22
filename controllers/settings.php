@@ -9,8 +9,7 @@ class Settings extends Admin_Controller {
 		parent::__construct();
 		
 
-        $this->auth->restrict('Site.Settings.View');
-        $this->auth->restrict('Site.Antispam.Manage');
+        $this->auth->restrict('Antispam.Settings.View');
         if (!class_exists('Activity_model'))
         {
             $this->load->model('activities/Activity_model', 'activity_model', true);
@@ -34,8 +33,9 @@ class Settings extends Admin_Controller {
 
     public function index()
     {
-        if ($this->input->post('submit'))
+         if ($this->input->post('submit'))
         {
+            $this->auth->restrict('Antispam.Settings.Manage');
             if ($this->save_settings())
             {
                 Template::set_message('Antispam settings were successfully saved.', 'success');
