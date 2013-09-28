@@ -88,13 +88,13 @@ class Settings extends Admin_Controller {
 		);
 
         //destroy the saved update message in case they changed update preferences.
-        if ($this->cache->get('update_message'))
+        /*if ($this->cache->get('update_message'))
         {
             if (!is_writeable(FCPATH.APPPATH.'cache/'))
             {
                 $this->cache->delete('update_message');
             }
-        }
+        }*/
 
         // Log the activity
         $this->activity_model->log_activity($this->auth->user_id(), lang('as_settings_saved').': ' . $this->input->ip_address(), 'antispam');

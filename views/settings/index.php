@@ -124,14 +124,11 @@
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
-    head.ready(function(){
-        $(document).ready(function() {
-            $('input#antispam_enabled').click(function() {
-                $('#ootp_block').toggle(this.checked);
-            });
-            $('#ootp_block').toggle($('input#antispam_enabled').is(':checked'));
-        });
-    });
-
+	$(document).ready(function() {
+		$('input#antispam_enabled').click(function() {
+			$('#ootp_block').toggle(this.checked);
+		});
+		$('#ootp_block').toggle($('input#antispam_enabled').is(':checked'));
+	});
 </script>
 
